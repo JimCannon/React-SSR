@@ -1,10 +1,12 @@
 //Startup point for the client side application
+import 'babel-polyfill'; // <- fixes regenerator not defined problem.
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux' //provider communicate data from the store to any connected components in our app
+import { renderRoutes } from 'react-router-config';
 import Routes from './Routes';
 import reducers from './reducers';
 
@@ -15,7 +17,7 @@ const store = createStore(reducers, {}, applyMiddleware(thunk)) // <-- read up o
 ReactDOM.hydrate(
   <Provider store={store}> 
     <BrowserRouter>
-      <Routes />
+      <div>{renderRoutes(Routes)}</div>
     </BrowserRouter>
   </Provider>,
   document.querySelector('#root')

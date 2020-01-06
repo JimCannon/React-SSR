@@ -1,5 +1,6 @@
 === 4 Big Redux Challanges ===
   * Redux needs different configuration on browser vs server.
+    - Completed
   * Aspects of authentication needs to be handled on server. Normally this is only on browser.
   * Need some way to detect when all initial data load action creaters are completeted on server.
   * Need state rehydration on the browser.
