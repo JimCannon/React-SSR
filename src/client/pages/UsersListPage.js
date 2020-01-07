@@ -27,4 +27,16 @@ function mapStateToProps(state) {
   return { users: state.users };
 }
 
-export default connect(mapStateToProps, { fetchUsers })(UsersList);
+//We are not using the connect method here becasue it hasnt been rendered yet.  
+//Instead we're using Redux  
+function loadData(store) {
+  return store.dispatch(fetchUsers());
+}
+
+
+
+
+export default {
+  loadData: loadData,
+  component: connect(mapStateToProps, { fetchUsers })(UsersList)
+};
