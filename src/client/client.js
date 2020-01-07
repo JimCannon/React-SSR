@@ -11,7 +11,7 @@ import Routes from './Routes';
 import reducers from './reducers';
 
 //a new redux store to use on the client side of our app.
-const store = createStore(reducers, {}, applyMiddleware(thunk)) // <-- read up on this.
+const store = createStore(reducers, window.INITIAL_STATE, applyMiddleware(thunk)) // <-- read up on this.
 
 //Provider gets store as props, provider listens to store.
 ReactDOM.hydrate(
