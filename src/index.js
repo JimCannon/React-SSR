@@ -9,18 +9,19 @@ import createStore from './helpers/createStore';
 const app = express();
 
 //When browser tries communicate with our render-server that starts with "api"
+//third arguement(proxyReqOptDecorator..) in the parameter is optional(needed for this project)
 app.use(
   '/api', 
-  proxy('http://react-ssr-api-herokuapp.com', {
+  proxy('http://react-ssr-api.herokuapp.com', {
     proxyReqOptDecorator(opts) {
-      opts.header['x-forwarded-host'] = 'localhost:3000';
+      opts.headers['x-forwarded-host'] = 'localhost:3000';
       return opts;
     }
   })
 );
 app.use(express.static('public'));
 app.get('*', (req, res) => {
-  const store = createStore();
+  const store = createStore(req);
 
   // Some logic to initialize
   // and load data into the store
