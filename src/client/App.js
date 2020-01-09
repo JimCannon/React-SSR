@@ -1,9 +1,15 @@
-import react from 'react';
+import React from 'react';
+import { renderRoutes } from 'react-router-config';
+import Header from './components/Header'
 
-const App =() => {
-  return
-    <div></div>;
-}
+const App = ({ route }) => {
+  return (
+    <div>
+      <Header></Header>
+      {renderRoutes(route.routes)}
+    </div>
+  );
+};
 
 export default {
   component: App
